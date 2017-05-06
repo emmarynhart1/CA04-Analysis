@@ -34,6 +34,8 @@ def get_authors(commits):
         else:
             authors[author] = authors[author] + 1
     return authors
+    
+
 
 if __name__ == '__main__':
     # open the file - and read all of the lines.
