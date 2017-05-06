@@ -35,7 +35,14 @@ def get_authors(commits):
             authors[author] = authors[author] + 1
     return authors
     
-
+def get_dates(commits):
+    dates = {}
+    for commit in commits:
+        auhor = commit['date']
+        if date not in dates:
+            dates[date] = 1
+        else:
+            dates[date] = dates[date] + 1
 
 if __name__ == '__main__':
     # open the file - and read all of the lines.
@@ -49,3 +56,10 @@ if __name__ == '__main__':
     print(commits[0])
     print(commits[1]['author'])
     print(len(commits))
+    
+keys = commits [0].keys()
+with open('test.csv', 'wb') as output_file:
+    dict_writer = csv.DictWriter(output_file, keys)
+    dict_writer.writeheader()
+    dict_writer.writerows(commits)
+    
