@@ -16,7 +16,7 @@ def get_commits(data):
                 'number_of_lines': details[3].strip().split(' ')[1]
             }
             commits.append(commit)
-            index = data.index(sep)
+            index = data.index(sep, index +1)
         except IndexError:
             break
     return commits
@@ -40,6 +40,7 @@ def get_dates(commits):
             dates[date] = 1
         else:
             dates[date] = dates[date] + 1
+    return dates
 
 if __name__ == '__main__':
     changes_file = 'changes_python.log'
