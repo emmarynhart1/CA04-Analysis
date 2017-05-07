@@ -24,6 +24,7 @@ def get_commits(data):
         except IndexError:
             break
     return commits
+    
 
 def get_authors(commits):
     authors = {}
@@ -38,7 +39,7 @@ def get_authors(commits):
 def get_dates(commits):
     dates = {}
     for commit in commits:
-        auhor = commit['date']
+        date = commit['date']
         if date not in dates:
             dates[date] = 1
         else:
@@ -57,9 +58,33 @@ if __name__ == '__main__':
     print(commits[1]['author'])
     print(len(commits))
     
-keys = commits [0].keys()
-with open('test.csv', 'wb') as output_file:
-    dict_writer = csv.DictWriter(output_file, keys)
-    dict_writer.writeheader()
-    dict_writer.writerows(commits)
+    output = open("DataAnalysis.csv", 'w')
+    index = 0
+    for commit in commits:
+        output.write(commits[index]['author'])
+        output.write(';')
+        output.write(commits[index]['revision'])
+        output.write(';')
+        output.write(commits[index]['date'])
+        output.write(';')
+        output.write(commits[index]['number_of_lines'])
+        output.write(';')
+        #output.write(str(commits[index]['comment'])
+        output.write(';')
+        #output.write(str(commits[index]['changes')
+        output.write('\n')
+        index = index +1
+    output.close()
+        
+           
+#keys = commits [0].keys()
+#with open('test.csv', 'wb') as output_file:
+    #dict_writer = csv.DictWriter(output_file, keys)
+    #dict_writer.writeheader()
+    #dict_writer.writerows(commits)
+    
+    index = 0
+    for commit in commits:
+        print (commits[index]['comment'])
+        index = index +1
     
