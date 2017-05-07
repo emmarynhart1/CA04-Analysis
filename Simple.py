@@ -51,9 +51,9 @@ if __name__ == '__main__':
     output = open("DataAnalysis.csv", 'w')
     index = 0
     for commit in commits:
-        output.write(commits[index]['author'])
-        output.write(';')
         output.write(commits[index]['revision'])
+        output.write(';')
+        output.write(commits[index]['author'])
         output.write(';')
         output.write(commits[index]['date'])
         output.write(';')
